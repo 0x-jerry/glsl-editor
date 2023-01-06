@@ -1,4 +1,18 @@
 {
+  "name": "glsl-editor",
+  "description": "glsl editor for threejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0x-jerry/glsl-editor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/0x-jerry/glsl-editor/issues"
+  },
+  "homepage": "https://github.com/0x-jerry/glsl-editor#readme",
   "packageManager": "pnpm@latest",
   "scripts": {
     "dev": "vite",
