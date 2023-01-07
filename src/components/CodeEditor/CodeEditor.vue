@@ -2,6 +2,7 @@
 import { StateField } from '@codemirror/state'
 import { cpp } from '@codemirror/lang-cpp'
 import { useEditor } from './hooks/useEditor'
+import { solarizedLight } from 'thememirror'
 
 export interface CodeEditorProps {
   modelValue?: Record<string, string>
@@ -40,6 +41,7 @@ const currentFile = computed({
 
 const editor = useEditor(editorEl, {
   extensions: [
+    solarizedLight,
     cpp(),
     StateField.define<void>({
       create() {},
@@ -112,6 +114,7 @@ function switchDoc(name: string, force = false) {
 .v-editor {
   .cm-editor {
     height: 100%;
+    outline: none;
   }
 }
 </style>
