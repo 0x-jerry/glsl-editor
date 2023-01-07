@@ -31,7 +31,7 @@ void main( void ) {
 const files = useLocalStorage('editor-files', defaultValues)
 
 const switches = reactive({
-  autoUpdate: true,
+  autoRotate: true,
 })
 </script>
 
@@ -40,13 +40,14 @@ const switches = reactive({
     <CodeEditor v-model="files" class="flex-1 border-(0 r gray-3 solid)"></CodeEditor>
     <WindowBox title="GLSL Preview" class="w-400px h-400px z-10">
       <GLSLPreview
+        auto-update
         :vertex="files.vertex"
         :fragment="files.fragment"
-        :auto-update="switches.autoUpdate"
+        :auto-rotate="switches.autoRotate"
       />
       <template #action>
-        <span class="cursor-pointer" @click="switches.autoUpdate = !switches.autoUpdate">
-          Auto Update: {{ switches.autoUpdate ? 'ON' : 'OFF' }}
+        <span class="cursor-pointer" @click="switches.autoRotate = !switches.autoRotate">
+          Auto Rotate: {{ switches.autoRotate ? 'ON' : 'OFF' }}
         </span>
       </template>
     </WindowBox>
