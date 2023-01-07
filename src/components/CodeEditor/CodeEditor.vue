@@ -2,7 +2,6 @@
 import { StateField } from '@codemirror/state'
 import { cpp } from '@codemirror/lang-cpp'
 import { useEditor } from './hooks/useEditor'
-import { solarizedLight } from 'thememirror'
 
 export interface CodeEditorProps {
   modelValue?: Record<string, string>
@@ -59,7 +58,6 @@ const currentFileWatcher = watchPausable(currentFile, switchDoc)
 
 const editor = useEditor(editorEl, {
   extensions: [
-    solarizedLight,
     cpp(),
     StateField.define<void>({
       create() {},
