@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     ICarbonUpdateNow: typeof import('~icons/carbon/update-now')['default']
     KButton: typeof import('@0x-jerry/vue-kit')['KButton']
     KInput: typeof import('@0x-jerry/vue-kit')['KInput']
+    KPopover: typeof import('@0x-jerry/vue-kit')['KPopover']
     KSwitch: typeof import('@0x-jerry/vue-kit')['KSwitch']
     WindowBox: typeof import('./components/WindowBox.vue')['default']
   }

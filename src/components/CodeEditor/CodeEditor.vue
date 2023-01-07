@@ -39,6 +39,22 @@ const currentFile = computed({
   },
 })
 
+const cursorPos = reactive({
+  x: 0,
+  y: 0,
+})
+
+const cursorPosStyle = computed(() => {
+  return {
+    left: cursorPos.x + 'px',
+    top: cursorPos.y + 'px',
+  }
+})
+
+const popover = reactive({
+  visible: false,
+})
+
 const editor = useEditor(editorEl, {
   extensions: [
     solarizedLight,
@@ -46,6 +62,14 @@ const editor = useEditor(editorEl, {
     StateField.define<void>({
       create() {},
       update(_, tr) {
+        if (tr.selection) {
+          const rect = editor.coordsAtPos(tr.selection.main.head)
+          if (rect) {
+            cursorPos.x = rect.left
+            cursorPos.y = rect.top
+            // popover.visible = true
+          }
+        }
         if (!tr.docChanged) {
           return
         }
@@ -107,6 +131,15 @@ function switchDoc(name: string, force = false) {
       </span>
     </div>
     <div ref="editorEl" class="flex-1 h-0"></div>
+    <k-popover
+      auto-update
+      placement="top"
+      v-model="popover.visible"
+      class="fixed"
+      :style="cursorPosStyle"
+    >
+      <div>hello</div>
+    </k-popover>
   </div>
 </template>
 
