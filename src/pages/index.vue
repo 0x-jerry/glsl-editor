@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useRouteQuery } from '@0x-jerry/vue-kit'
+
 const defaultValues = {
   vertex: `
 varying vec2 vUv;
@@ -28,26 +30,31 @@ void main( void ) {
   `.trim(),
 }
 
-const files = useLocalStorage('editor-files', defaultValues)
+const filename = useRouteQuery('filename', Object.keys(defaultValues)[0])
 
-const switches = reactive({
+const editor = useLocalStorage('editor-config', {
+  files: defaultValues,
   autoRotate: true,
 })
 </script>
 
 <template>
   <div class="flex w-screen h-screen">
-    <CodeEditor v-model="files" class="flex-1 border-(0 r gray-3 solid)"></CodeEditor>
+    <CodeEditor
+      v-model="editor.files"
+      v-model:current="filename"
+      class="flex-1 border-(0 r gray-3 solid)"
+    ></CodeEditor>
     <WindowBox title="GLSL Preview" class="w-400px h-400px z-10">
       <GLSLPreview
         auto-update
-        :vertex="files.vertex"
-        :fragment="files.fragment"
-        :auto-rotate="switches.autoRotate"
+        :vertex="editor.files.vertex"
+        :fragment="editor.files.fragment"
+        :auto-rotate="editor.autoRotate"
       />
       <template #action>
-        <span class="cursor-pointer" @click="switches.autoRotate = !switches.autoRotate">
-          Auto Rotate: {{ switches.autoRotate ? 'ON' : 'OFF' }}
+        <span class="cursor-pointer" @click="editor.autoRotate = !editor.autoRotate">
+          Auto Rotate: {{ editor.autoRotate ? 'ON' : 'OFF' }}
         </span>
       </template>
     </WindowBox>
