@@ -94,7 +94,7 @@ function switchDoc(name: string, force = false) {
 
 <template>
   <div class="v-editor flex flex-col w-full h-full">
-    <div class="editor-header h-30px flex border-(0 b solid gray-3)" @dblclick.self="newDoc">
+    <div class="editor-header h-30px flex border-(0 b solid gray-3)">
       <span
         class="filename max-w-100px truncate text-gray-5 px-2 flex items-center border-(0 r solid gray-3) cursor-default select-none"
         :class="{
