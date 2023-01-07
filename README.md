@@ -1,3 +1,3 @@
-# tpl-vue
+# GLSL preview
 
-Template for vue project.
+![](docs/preview.png)
