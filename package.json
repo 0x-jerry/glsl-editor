@@ -24,6 +24,7 @@
     "@0x-jerry/utils": "^1.12.4",
     "@0x-jerry/vue-kit": "workspace:*",
     "@codemirror/commands": "^6.1.3",
+    "@codemirror/lang-cpp": "^6.0.2",
     "@codemirror/state": "^6.2.0",
     "@codemirror/view": "^6.7.2",
     "@vueuse/core": "^9.10.0",

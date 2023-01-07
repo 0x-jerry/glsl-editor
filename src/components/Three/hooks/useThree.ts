@@ -10,6 +10,7 @@ export function useThree(ele: Ref<HTMLElement | undefined>, opt?: UseThreeOption
 
   const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000)
   const renderer = new THREE.WebGLRenderer()
+  renderer.setPixelRatio(window.devicePixelRatio)
   renderer.domElement.style.position = 'absolute'
   const orbitControls = new OrbitControls(camera, renderer.domElement)
   const tracker = new Tracker()

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { StateField, Text } from '@codemirror/state'
+import { StateField } from '@codemirror/state'
+import { cpp } from '@codemirror/lang-cpp'
 import { useEditor } from './hooks/useEditor'
 
 export interface CodeEditorProps {
@@ -39,6 +40,7 @@ const currentFile = computed({
 
 const editor = useEditor(editorEl, {
   extensions: [
+    cpp(),
     StateField.define<void>({
       create() {},
       update(_, tr) {

@@ -8,9 +8,11 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeEditor: typeof import('./components/CodeEditor/CodeEditor.vue')['default']
+    GLSLPreview: typeof import('./components/Three/GLSLPreview.vue')['default']
+    ICarbonUpdateNow: typeof import('~icons/carbon/update-now')['default']
     KButton: typeof import('@0x-jerry/vue-kit')['KButton']
     KInput: typeof import('@0x-jerry/vue-kit')['KInput']
-    Three: typeof import('./components/Three/Three.vue')['default']
+    KSwitch: typeof import('@0x-jerry/vue-kit')['KSwitch']
     WindowBox: typeof import('./components/WindowBox.vue')['default']
   }
 }

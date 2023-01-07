@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const files = reactive({
+const defaultValues = {
   vertex: `
 varying vec2 vUv;
 
@@ -9,7 +9,7 @@ void main()
   vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
   gl_Position = projectionMatrix * mvPosition;
 }
-`,
+`.trim(),
   fragment: `
 uniform float time;
 
@@ -25,15 +25,30 @@ void main( void ) {
   gl_FragColor = vec4( red, green, blue, 1.0 );
 
 }
-  `,
+  `.trim(),
+}
+
+const files = useLocalStorage('editor-files', defaultValues)
+
+const switches = reactive({
+  autoUpdate: true,
 })
 </script>
 
 <template>
   <div class="flex w-screen h-screen">
     <CodeEditor v-model="files" class="flex-1 border-(0 r gray-3 solid)"></CodeEditor>
-    <WindowBox class="w-400px h-400px z-10">
-      <Three :vertex="files.vertex" :fragment="files.fragment"></Three>
+    <WindowBox title="GLSL Preview" class="w-400px h-400px z-10">
+      <GLSLPreview
+        :vertex="files.vertex"
+        :fragment="files.fragment"
+        :auto-update="switches.autoUpdate"
+      />
+      <template #action>
+        <span class="cursor-pointer" @click="switches.autoUpdate = !switches.autoUpdate">
+          Auto Update: {{ switches.autoUpdate ? 'ON' : 'OFF' }}
+        </span>
+      </template>
     </WindowBox>
   </div>
 </template>
