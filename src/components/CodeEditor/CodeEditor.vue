@@ -54,6 +54,8 @@ const editor = useEditor(editorEl, {
   ],
 })
 
+switchDoc(currentFilename.value!, true)
+
 function newDoc() {
   const names = Object.keys(files.value!)
   let validName = 'untitled'
@@ -69,8 +71,8 @@ function newDoc() {
   }
 }
 
-function switchDoc(name: string) {
-  if (currentFilename.value === name) {
+function switchDoc(name: string, force = false) {
+  if (currentFilename.value === name && !force) {
     return
   }
 

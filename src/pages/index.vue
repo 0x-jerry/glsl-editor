@@ -19,11 +19,16 @@ const posStyle = computed(() => {
     top: `${pos.y}px`,
   }
 })
+
+const files = reactive({
+  vertex: '123',
+  fragment: '234',
+})
 </script>
 
 <template>
   <div class="flex w-screen h-screen">
-    <CodeEditor class="flex-1 border-(0 r gray-3 solid)"></CodeEditor>
+    <CodeEditor v-model="files" class="flex-1 border-(0 r gray-3 solid)"></CodeEditor>
     <div ref="overlay" class="absolute w-400px h-400px z-10 cursor-move" :style="posStyle">
       <Three></Three>
     </div>
