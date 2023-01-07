@@ -11,5 +11,6 @@ declare module '@vue/runtime-core' {
     KButton: typeof import('@0x-jerry/vue-kit')['KButton']
     KInput: typeof import('@0x-jerry/vue-kit')['KInput']
     Three: typeof import('./components/Three/Three.vue')['default']
+    WindowBox: typeof import('./components/WindowBox.vue')['default']
   }
 }
