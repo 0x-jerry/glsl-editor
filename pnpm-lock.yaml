@@ -6,12 +6,18 @@ importers:
     specifiers:
       '@0x-jerry/utils': ^1.12.4
       '@0x-jerry/vue-kit': workspace:*
+      '@codemirror/commands': ^6.1.3
+      '@codemirror/state': ^6.2.0
+      '@codemirror/view': ^6.7.2
       '@iconify/json': ^2.2.3
       '@types/node': ^18.11.18
+      '@types/three': ^0.148.0
       '@vitejs/plugin-vue': ^4.0.0
       '@vueuse/core': ^9.10.0
+      codemirror: ^6.0.1
       less: ^4.1.3
       normalize.css: ^8.0.1
+      three: ^0.148.0
       typescript: ^4.9.4
       unocss: 0.48.1
       unplugin-auto-import: ^0.12.1
@@ -26,13 +32,19 @@ importers:
     dependencies:
       '@0x-jerry/utils': 1.12.4
       '@0x-jerry/vue-kit': link:kit
+      '@codemirror/commands': 6.1.3
+      '@codemirror/state': 6.2.0
+      '@codemirror/view': 6.7.2
       '@vueuse/core': 9.10.0_vue@3.2.45
+      codemirror: 6.0.1
       normalize.css: 8.0.1
+      three: 0.148.0
       vue: 3.2.45
       vue-router: 4.1.6_vue@3.2.45
     devDependencies:
       '@iconify/json': 2.2.3
       '@types/node': 18.11.18
+      '@types/three': 0.148.0
       '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
       less: 4.1.3
       typescript: 4.9.4
@@ -182,6 +194,66 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+
+  /@codemirror/autocomplete/6.4.0_ootph5s5ydlpya6ok6lxu3ipni:
+    resolution: {integrity: sha512-HLF2PnZAm1s4kGs30EiqKMgD7XsYaQ0XJnMR0rofEWQ5t5D60SfqpDIkIh1ze5tiEbyUWm8+VJ6W1/erVvBMIA==}
+    peerDependencies:
+      '@codemirror/state': ^6.0.0
+      '@codemirror/view': ^6.0.0
+    dependencies:
+      '@codemirror/language': 6.3.2
+      '@codemirror/state': 6.2.0
+      '@codemirror/view': 6.7.2
+      '@lezer/common': 1.0.2
+    dev: false
+
+  /@codemirror/commands/6.1.3:
+    resolution: {integrity: sha512-wUw1+vb34Ultv0Q9m/OVB7yizGXgtoDbkI5f5ErM8bebwLyUYjicdhJTKhTvPTpgkv8dq/BK0lQ3K5pRf2DAJw==}
+    dependencies:
+      '@codemirror/language': 6.3.2
+      '@codemirror/state': 6.2.0
+      '@codemirror/view': 6.7.2
+      '@lezer/common': 1.0.2
+    dev: false
+
+  /@codemirror/language/6.3.2:
+    resolution: {integrity: sha512-g42uHhOcEMAXjmozGG+rdom5UsbyfMxQFh7AbkeoaNImddL6Xt4cQDL0+JxmG7+as18rUAvZaqzP/TjsciVIrA==}
+    dependencies:
+      '@codemirror/state': 6.2.0
+      '@codemirror/view': 6.7.2
+      '@lezer/common': 1.0.2
+      '@lezer/highlight': 1.1.3
+      '@lezer/lr': 1.2.5
+      style-mod: 4.0.0
+    dev: false
+
+  /@codemirror/lint/6.1.0:
+    resolution: {integrity: sha512-mdvDQrjRmYPvQ3WrzF6Ewaao+NWERYtpthJvoQ3tK3t/44Ynhk8ZGjTSL9jMEv8CgSMogmt75X8ceOZRDSXHtQ==}
+    dependencies:
+      '@codemirror/state': 6.2.0
+      '@codemirror/view': 6.7.2
+      crelt: 1.0.5
+    dev: false
+
+  /@codemirror/search/6.2.3:
+    resolution: {integrity: sha512-V9n9233lopQhB1dyjsBK2Wc1i+8hcCqxl1wQ46c5HWWLePoe4FluV3TGHoZ04rBRlGjNyz9DTmpJErig8UE4jw==}
+    dependencies:
+      '@codemirror/state': 6.2.0
+      '@codemirror/view': 6.7.2
+      crelt: 1.0.5
+    dev: false
+
+  /@codemirror/state/6.2.0:
+    resolution: {integrity: sha512-69QXtcrsc3RYtOtd+GsvczJ319udtBf1PTrr2KbLWM/e2CXUPnh0Nz9AUo8WfhSQ7GeL8dPVNUmhQVgpmuaNGA==}
+    dev: false
+
+  /@codemirror/view/6.7.2:
+    resolution: {integrity: sha512-HeK2GyycxceaQVyvYVYXmn1vUKYYBsHCcfGRSsFO+3fRRtwXx2STK0YiFBmiWx2vtU9gUAJgIUXUN8a0osI8Ng==}
+    dependencies:
+      '@codemirror/state': 6.2.0
+      style-mod: 4.0.0
+      w3c-keyname: 2.2.6
+    dev: false
 
   /@esbuild/android-arm/0.15.13:
     resolution: {integrity: sha512-RY2fVI8O0iFUNvZirXaQ1vMvK0xhCcl0gqRj74Z6yEiO1zAUa7hbsdwZM1kzqbxHK7LFyMizipfXT3JME+12Hw==}
@@ -471,6 +543,22 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@lezer/common/1.0.2:
+    resolution: {integrity: sha512-SVgiGtMnMnW3ActR8SXgsDhw7a0w0ChHSYAyAUxxrOiJ1OqYWEKk/xJd84tTSPo1mo6DXLObAJALNnd0Hrv7Ng==}
+    dev: false
+
+  /@lezer/highlight/1.1.3:
+    resolution: {integrity: sha512-3vLKLPThO4td43lYRBygmMY18JN3CPh9w+XS2j8WC30vR4yZeFG4z1iFe4jXE43NtGqe//zHW5q8ENLlHvz9gw==}
+    dependencies:
+      '@lezer/common': 1.0.2
+    dev: false
+
+  /@lezer/lr/1.2.5:
+    resolution: {integrity: sha512-f9319YG1A/3ysgUE3bqCHEd7g+3ZZ71MWlwEc42mpnLVYXgfJJgtu1XAyBB4Kz8FmqmnFe9caopDqKeMMMAU6g==}
+    dependencies:
+      '@lezer/common': 1.0.2
+    dev: false
+
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -660,12 +748,22 @@ packages:
       '@types/node': 18.11.18
     dev: true
 
+  /@types/three/0.148.0:
+    resolution: {integrity: sha512-1GiErjt1pJMadO8EhaxNrtULzdn+f3BbM3YTukiiXBVeRvvx4CXc2rpYdEuEBU/ouCX7Rc95j1HoVG9kFQXQJw==}
+    dependencies:
+      '@types/webxr': 0.5.0
+    dev: true
+
   /@types/throttle-debounce/2.1.0:
     resolution: {integrity: sha512-5eQEtSCoESnh2FsiLTxE121IiE60hnMqcb435fShf4bpLRjEu1Eoekht23y6zXS9Ts3l+Szu3TARnTsA0GkOkQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/@types/throttle-debounce/-/throttle-debounce-2.1.0.tgz}
     dev: true
 
   /@types/web-bluetooth/0.0.16:
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
+
+  /@types/webxr/0.5.0:
+    resolution: {integrity: sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==}
+    dev: true
 
   /@unocss/astro/0.47.6_vite@3.2.4:
     resolution: {integrity: sha512-8lR4KwuCeVxOTKk6g6hx6VUHhW1u+hki8oRsJaKEB0s5iUPmY6rCNtb/iaBJdceY11bZMMy5LZHJFTkod/T/zg==}
@@ -1313,6 +1411,18 @@ packages:
       wrap-ansi: 6.2.0
     dev: false
 
+  /codemirror/6.0.1:
+    resolution: {integrity: sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg==}
+    dependencies:
+      '@codemirror/autocomplete': 6.4.0_ootph5s5ydlpya6ok6lxu3ipni
+      '@codemirror/commands': 6.1.3
+      '@codemirror/language': 6.3.2
+      '@codemirror/lint': 6.1.0
+      '@codemirror/search': 6.2.3
+      '@codemirror/state': 6.2.0
+      '@codemirror/view': 6.7.2
+    dev: false
+
   /color-convert/2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/color-convert/-/color-convert-2.0.1.tgz}
     engines: {node: '>=7.0.0'}
@@ -1346,6 +1456,10 @@ packages:
     dependencies:
       is-what: 3.14.1
     dev: true
+
+  /crelt/1.0.5:
+    resolution: {integrity: sha512-+BO9wPPi+DWTDcNYhr/W90myha8ptzftZT+LwcmUbbok0rcP/fequmFYCw8NMoH7pkAZQzU78b3kYrlua5a9eA==}
+    dev: false
 
   /cropperjs/1.5.13:
     resolution: {integrity: sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==}
@@ -3132,6 +3246,10 @@ packages:
       acorn: 8.8.1
     dev: true
 
+  /style-mod/4.0.0:
+    resolution: {integrity: sha512-OPhtyEjyyN9x3nhPsu76f52yUGXiZcgvsrFVtvTkyGRQJ0XK+GPc6ov1z+lRpbeabka+MYEQxOYRnt5nF30aMw==}
+    dev: false
+
   /sucrase/3.29.0:
     resolution: {integrity: sha512-bZPAuGA5SdFHuzqIhTAqt9fvNEo9rESqXIG3oiKdF8K4UmkQxC4KlNL3lVyAErXp+mPvUqZ5l13qx6TrDIGf3A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/sucrase/-/sucrase-3.29.0.tgz}
     engines: {node: '>=8'}
@@ -3162,6 +3280,10 @@ packages:
     dependencies:
       any-promise: 1.3.0
     dev: true
+
+  /three/0.148.0:
+    resolution: {integrity: sha512-8uzVV+qhTPi0bOFs/3te3RW6hb3urL8jYEl6irjCWo/l6sr8MPNMcClFev/MMYeIxr0gmDcoXTy/8LXh/LXkfw==}
+    dev: false
 
   /tinybench/2.3.1:
     resolution: {integrity: sha512-hGYWYBMPr7p4g5IarQE7XhlyWveh1EKhy4wUBS1LrHXCKYgvz+4/jCqgmJqZxxldesn05vccrtME2RLLZNW7iA==}
@@ -3789,6 +3911,10 @@ packages:
       '@vue/runtime-dom': 3.2.45
       '@vue/server-renderer': 3.2.45_vue@3.2.45
       '@vue/shared': 3.2.45
+
+  /w3c-keyname/2.2.6:
+    resolution: {integrity: sha512-f+fciywl1SJEniZHD6H+kUO8gOnwIr7f4ijKA6+ZvJFjeGi1r4PDLl53Ayud9O/rk64RqgoQine0feoeOU0kXg==}
+    dev: false
 
   /webidl-conversions/3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}

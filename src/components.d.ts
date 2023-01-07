@@ -7,7 +7,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CodeEditor: typeof import('./components/CodeEditor/CodeEditor.vue')['default']
     KButton: typeof import('@0x-jerry/vue-kit')['KButton']
     KInput: typeof import('@0x-jerry/vue-kit')['KInput']
+    Three: typeof import('./components/Three/Three.vue')['default']
   }
 }
