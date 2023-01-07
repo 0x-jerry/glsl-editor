@@ -82,7 +82,17 @@ const editor = useEditor(editorEl, {
   ],
 })
 
-switchDoc(currentFilename.value!, true)
+watch(currentFile, switchDoc, { immediate: true })
+
+function switchDoc() {
+  editor.dispatch({
+    changes: {
+      from: 0,
+      to: editor.state.doc.length,
+      insert: currentFile.value,
+    },
+  })
+}
 
 function newDoc() {
   const names = Object.keys(files.value!)
@@ -98,22 +108,6 @@ function newDoc() {
     [validName]: '',
   }
 }
-
-function switchDoc(name: string, force = false) {
-  if (currentFilename.value === name && !force) {
-    return
-  }
-
-  currentFilename.value = name
-
-  editor.dispatch({
-    changes: {
-      from: 0,
-      to: editor.state.doc.length,
-      insert: currentFile.value,
-    },
-  })
-}
 </script>
 
 <template>
@@ -124,7 +118,7 @@ function switchDoc(name: string, force = false) {
         :class="{
           'bg-blue-1': currentFilename === item,
         }"
-        @click="switchDoc(item)"
+        @click="currentFilename = item"
         v-for="item in Object.keys(files!)"
       >
         {{ item }}
