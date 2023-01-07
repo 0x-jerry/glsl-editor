@@ -55,6 +55,8 @@ const popover = reactive({
   visible: false,
 })
 
+const currentFileWatcher = watchPausable(currentFile, switchDoc)
+
 const editor = useEditor(editorEl, {
   extensions: [
     solarizedLight,
@@ -70,21 +72,30 @@ const editor = useEditor(editorEl, {
             // popover.visible = true
           }
         }
+
         if (!tr.docChanged) {
           return
         }
 
         const text = tr.newDoc.toString()
 
+        currentFileWatcher.pause()
+
         currentFile.value = text
+
+        currentFileWatcher.resume()
       },
     }),
   ],
 })
 
-watch(currentFile, switchDoc, { immediate: true })
+switchDoc()
 
 function switchDoc() {
+  const isTheSame = currentFile.value === editor.state.doc.toString()
+
+  if (isTheSame) return
+
   editor.dispatch({
     changes: {
       from: 0,
