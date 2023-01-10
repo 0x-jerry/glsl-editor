@@ -39,10 +39,6 @@ export function useThree(ele: Ref<HTMLElement | undefined>, opt?: UseThreeOption
     camera.updateMatrix()
   }
 
-  useRafFn(() => {
-    renderer.render(scene, camera)
-  })
-
   return {
     renderer,
     scene,
@@ -50,5 +46,8 @@ export function useThree(ele: Ref<HTMLElement | undefined>, opt?: UseThreeOption
     tracker,
     orbitControls,
     resize,
+    render() {
+      renderer.render(scene, camera)
+    },
   }
 }

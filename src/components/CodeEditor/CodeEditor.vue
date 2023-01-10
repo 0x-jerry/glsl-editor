@@ -62,16 +62,16 @@ const editor = useEditor(editorEl, {
     StateField.define<void>({
       create() {},
       update(_, tr) {
-        if (tr.selection) {
-          const rect = editor.coordsAtPos(tr.selection.main.head)
-          if (rect) {
-            cursorPos.x = rect.left
-            cursorPos.y = rect.top
-            // popover.visible = true
-          }
-        }
-
         if (!tr.docChanged) {
+          if (tr.selection) {
+            const rect = editor.coordsAtPos(tr.selection.main.head)
+            if (rect) {
+              cursorPos.x = rect.left
+              cursorPos.y = rect.top
+              // popover.visible = true
+            }
+          }
+
           return
         }
 

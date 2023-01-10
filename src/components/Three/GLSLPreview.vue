@@ -12,7 +12,7 @@ const props = defineProps<{
 
 const root = ref<HTMLElement>()
 
-const { camera, scene, resize, tracker } = useThree(root)
+const { camera, scene, resize, tracker, render } = useThree(root)
 
 const containerSize = useElementSize(root)
 
@@ -22,8 +22,8 @@ camera.position.x = 1
 
 watch(() => containerSize, resize, { deep: true })
 
-let material: THREE.Material = new THREE.MeshStandardMaterial()
-tracker.add(() => material.dispose())
+let material: THREE.ShaderMaterial | undefined
+tracker.add(() => material?.dispose())
 const geometry = new THREE.BoxGeometry(0.75, 0.75, 0.75)
 tracker.add(geometry)
 const mesh = new THREE.Mesh(geometry, material)
@@ -54,17 +54,67 @@ watch(
 )
 
 function updateMaterial() {
+  const uniforms: Record<string, THREE.IUniform> = {
+    mouse: {
+      value: { x: 0, y: 0 },
+    },
+    resolution: {
+      value: {
+        x: root.value?.clientWidth || 1,
+        y: root.value?.clientHeight || 1,
+      },
+    },
+    time: {
+      value: performance.now() / 1000,
+    },
+  }
+
   const newShaderMaterial = new THREE.ShaderMaterial({
     vertexShader: props.vertex,
     fragmentShader: props.fragment,
-    uniforms: props.uniforms || {},
+    uniforms: uniforms,
   })
 
-  material.dispose()
+  newShaderMaterial.needsUpdate = true
+  newShaderMaterial.uniformsNeedUpdate = true
+
+  material?.dispose()
   material = newShaderMaterial
 
   mesh.material = newShaderMaterial
 }
+
+const pos = useMouseInElement(root)
+
+useRafFn(() => {
+  if (!material) return
+  if (!root.value) return
+  if (!material) return
+
+  const resolution = {
+    x: root.value.clientWidth || 1,
+    y: root.value.clientHeight || 1,
+  }
+
+  material.uniforms.resolution = { value: resolution }
+
+  if (!pos.isOutside.value) {
+    const mouse = {
+      x: pos.elementX.value / resolution.x,
+      y: pos.elementY.value / resolution.y,
+    }
+
+    material.uniforms.mouse = {
+      value: mouse,
+    }
+  }
+
+  material.uniforms.time = {
+    value: performance.now() / 1000,
+  }
+
+  render()
+})
 
 defineExpose({
   updateMaterial,
